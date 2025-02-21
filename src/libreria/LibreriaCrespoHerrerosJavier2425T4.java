@@ -17,40 +17,96 @@ public class LibreriaCrespoHerrerosJavier2425T4 {
     }
     //Método que devuelve el nombre del libro
     public String obtenerNombre(){
-        return nom;
+        return getNom();
     }
     //Método que devuelve el precio del libro
     public double obtenerPrecio(){
-        return precio;
+        return getPrecio();
     }
     //Método que devuelve la cantidad de libros de ese ejemplar que quedan para vender
     public int obtenerStock(){
-        return cantidad;
+        return getCantidad();
     }
     //Método para obtener el saldo en la cuenta
     public double obtenerSaldo(){
-        return saldo;
+        return getSaldo();
     }
     //Método para aumentar el saldo
     public void aumentarSaldo(double saldomas) throws Exception{
         if (saldomas<=0)
             throw new Exception("No se puede ingresar 0 o una cantidad negativa");
-        saldo = saldo + saldomas;
+        setSaldo(getSaldo() + saldomas);
     }
     //Método para comprar un ejemplar de un libro, actualiza el stock y el saldo
     public void comprarLibro(int canti) throws Exception{
         if (canti <= 0)
             throw new Exception ("No se puede retirar una cantidad negativa de libros");
-        if (cantidad>=canti){
-            if (saldo <= precio)
+        if (getCantidad()>=canti){
+            if (getSaldo() <= getPrecio())
                   throw new Exception ("No hay suficiente saldo para comprar");
             else{
-                cantidad = cantidad -canti;
-                saldo = saldo + (precio*canti);
+                setCantidad(getCantidad() - canti);
+                setSaldo(getSaldo() + (getPrecio() * canti));
             }
         }
         else 
             throw new Exception ("No se pueden comprar más libros de los que hay disponibles");
        
+    }
+
+    /**
+     * @return the nom
+     */
+    public String getNom() {
+        return nom;
+    }
+
+    /**
+     * @param nom the nom to set
+     */
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    /**
+     * @return the cantidad
+     */
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    /**
+     * @param cantidad the cantidad to set
+     */
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    /**
+     * @return the precio
+     */
+    public double getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(double precio) {
+        this.precio = precio;
+    }
+
+    /**
+     * @return the saldo
+     */
+    public double getSaldo() {
+        return saldo;
+    }
+
+    /**
+     * @param saldo the saldo to set
+     */
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 }
